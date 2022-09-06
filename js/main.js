@@ -1,13 +1,30 @@
 const form = document.querySelector('#form');
 const taskInput = document.querySelector('#taskInput');
 const tasksList = document.querySelector('#tasksList');
+const emptyList = document.querySelector('#emptyList');
 
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', addTask);
+tasksList.addEventListener('click', deleteTask);
+
+
+function deleteTask(e) {
+    if (e.target.dataset.action === 'delete') {
+        const parentNode = e.target.closest('.list-group-item');
+        parentNode.remove();
+    }
+
+    if (tasksList.children.length === 1) {
+        emptyList.classList.remove('none');
+    }
+
+}
+
+
+function addTask(e) {
     e.preventDefault();
 
     const taskText = taskInput.value;
-
     const taskHTML = `
     <li class="list-group-item d-flex justify-content-between task-item">
         <span class="task-title">${taskText}</span>
@@ -24,4 +41,8 @@ form.addEventListener('submit', (e) => {
     tasksList.insertAdjacentHTML('beforeend', taskHTML);
     taskInput.value = '';
     taskInput.focus();
-});
+
+    if (tasksList.children.length > 1) {
+        emptyList.classList.add('none');
+    }
+}
