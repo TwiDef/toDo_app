@@ -4,11 +4,17 @@ body {
 }
 
 body {
-    background-color: #E4E5E7;
+    background: url('../img/notebook.jpg') center center/cover no-repeat;
     padding-top: 30px;
+    box-shadow: 0 0 20px 4px rgba(54, 54, 54);
+    backdrop-filter: blur(2.75px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.display-4 {
+    color: #E4E5E7;
 }
 
 .aside {
@@ -68,7 +74,7 @@ body {
 }
 
 .btn-action {
-    background-color: #e0e5ea;
+    background-color: #eae8e0;
     padding: 8px 10px;
     cursor: pointer;
     border: 0;
